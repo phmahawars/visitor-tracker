@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\BotController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\IPInfoController;
 use App\Http\Controllers\Admin\VisitorController;
 use App\Http\Middleware\SetCustomUserAgent;
 use Illuminate\Support\Facades\Route;
@@ -12,6 +13,7 @@ Route::middleware([SetCustomUserAgent::class])->group(function () {
     // Route::get('/', [DashboardController::class, 'index'])->name('dashboard.index');
 
     // Visitor Logs
+    Route::get('/ip-info', [IPInfoController::class, 'logs'])->name('logs.index');
     Route::get('/', [VisitorController::class, 'logs'])->name('logs.index');
     Route::get('/blocked-ips', [VisitorController::class, 'blockedIp'])->name('ips.blocked');
     Route::post('/block-ip', [VisitorController::class, 'blockIp'])->name('ips.block');
